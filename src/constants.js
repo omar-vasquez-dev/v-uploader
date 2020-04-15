@@ -55,7 +55,34 @@ const i18n = {
         }
 
     },
-    en: {
+    es: {
+        messages: {
+            'typeError' : "{file} El formato del archivo es incorrecto. Formato válido: {extensions}",
+            'sizeError' : "{file} El tamaño del archivo excede el límite máximo permitido: {sizeLimit}",
+            'minSizeError' : "{file} El tamaño del archivo es inferior al límite mínimo permitido: {minSizeLimit}.",
+            'emptyError' : "{file} El archivo está vacío, elija otro archivo para cargar.",
+            'noFilesError' : "No hay archivos seleccionados para cargar",
+            'tooManyItemsError' : "({netItems}) archivos. Demasiados para cargar. permitido： {itemLimit}个",
+            'maxHeightImageError' : "La altura de la imagen excede el límite.",
+            'maxWidthImageError' : "El ancho de la imagen excede el límite.",
+            'minHeightImageError' : "La altura de la imagen es insuficiente.",
+            'minWidthImageError' : "Ancho de imagen insuficiente.",
+            'retryFailTooManyItems' : "Vuelva a intentarlo: ha alcanzado el número máximo de archivos.",
+            'onLeave' : "Archivos cargando. Si sale de esta página se cancelarán todas las cargas."
+        },
+        text: {
+            'failUpload' : 'Error al subir.',
+            'fileInputTitle' : 'Seleccionar archivo.'
+        },
+        ui: {
+            thumbnail: 'Miniatura',
+            choseFileButton: 'Seleccionar archivo..',
+            dropHere: 'Arrastra los archivos aquí para subir.',
+            done: 'Completado',
+            fileTypes: 'Tipo de archivo',
+            fileSizeLimit: 'Límite de tamaño de archivo'
+        },
+     en: {
         ui: {
             thumbnail: 'thumbnail',
             choseFileButton: 'select file',
@@ -115,7 +142,16 @@ const buildOptions = function(){
     return p;
 }
 
-const getI18n = language => (!language || language !== 'en') ? i18n.cn.ui : i18n.en.ui ;
+const getI18n = language => {
+  switch(language){
+    case 'en':
+      return i18n.en.ui;
+    case 'es': 
+      return i18n.es.ui;
+    default:
+      return i18n.cn.ui;
+  }
+}
 
 export {buildOptions};
 export {getI18n};
